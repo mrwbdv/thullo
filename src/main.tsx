@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(
-  <h1>Hello World</h1>,
-  document.getElementById('root')
-);
+import { App } from './app';
+
+const rootElement = document.getElementById('root');
+
+ReactDOM.render(<App />, rootElement);
 
 // const path = require("path");
 // const str: string = "hellllo";
