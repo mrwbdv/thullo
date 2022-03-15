@@ -1,10 +1,10 @@
-import React from 'react';
-import { Common } from './common';
+import React from "react";
+import { Common } from "./common";
 
 export const GlobalStyles = () => {
-  return (
-    <>
-      <Common />
-    </>
-  );
+    return (
+        <>
+            <Common />
+        </>
+    );
 };

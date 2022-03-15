@@ -1,10 +1,11 @@
 const path = require("path");
 const { merge } = require("webpack-merge");
 const { webpackCommonConfig } = require("./webpack.common");
-const { outputPathDir, staticPathDir } = require("./utils");
+const { outputPathDir, staticPathDir, sourcePathDir } = require("./utils");
 
 //plugins
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 module.exports = merge(webpackCommonConfig, {
     mode: "development",
@@ -13,6 +14,14 @@ module.exports = merge(webpackCommonConfig, {
         hot: true,
         port: 3000,
         open: true,
+        client: {
+            logging: "none",
+            progress: true,
+            overlay: {
+                errors: true,
+                warnings: false,
+            },
+        },
     },
     output: {
         path: outputPathDir,
@@ -23,28 +32,36 @@ module.exports = merge(webpackCommonConfig, {
             {
                 test: /\.(ts|tsx)$/,
                 use: [
-                    // {
-                    //     loader: "cache-loader",
-                    //     options: {
-                    //         cacheDirectory: path.resolve(
-                    //             rootDir,
-                    //             "node_modules/.cache/cache-loader"
-                    //         ),
-                    //     },
-                    // // },
-                    // "thread-loader",
                     {
                         loader: "babel-loader",
-                        // options: {
-                        //     plugins: ["react-refresh/babel"],
-                        // },
                     },
                 ],
                 exclude: /node_modules/,
             },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                use: [
+                    {
+                        loader: "file-loader",
+                    },
+                ],
+            },
         ],
     },
     plugins: [
+        new ForkTsCheckerWebpackPlugin({
+            typescript: {
+                mode: "write-references",
+                diagnosticOptions: {
+                    semantic: true,
+                    syntactic: true,
+                },
+            },
+            eslint: {
+                enabled: true,
+                files: path.join(sourcePathDir, "**/*.{ts,tsx}"),
+            },
+        }),
         new HtmlWebpackPlugin({
             template: path.join(staticPathDir, "index.html"), // шаблон для создания страницы
         }),

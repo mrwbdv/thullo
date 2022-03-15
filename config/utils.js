@@ -4,6 +4,10 @@ const rootPathDir = path.resolve(process.cwd());
 
 module.exports.rootPathDir = rootPathDir;
 
+const sourcePathDir = path.resolve(rootPathDir, "src");
+
+module.exports.sourcePathDir = sourcePathDir;
+
 const outputPathDir = path.resolve(rootPathDir, "dist");
 
 module.exports.outputPathDir = outputPathDir;
