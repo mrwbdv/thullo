@@ -7,6 +7,7 @@
         "dev": "webpack --config config/webpack.dev.js",
         "start": "webpack-dev-server --config config/webpack.dev.js",
         "build": "webpack --config config/webpack.prod.js",
+        "dll": "webpack --config config/webpack.lib.js",
         "lint": "eslint --ext .ts,.tsx src/ --fix",
         "prepare": "husky install"
     },
@@ -25,6 +26,7 @@
         "@types/styled-components": "^5.1.24",
         "@typescript-eslint/eslint-plugin": "^5.15.0",
         "@typescript-eslint/parser": "^5.15.0",
+        "add-asset-html-webpack-plugin": "^5.0.1",
         "babel-loader": "^8.2.3",
         "clean-webpack-plugin": "^4.0.0",
         "eslint": "^8.11.0",
@@ -45,8 +47,8 @@
         "webpack-merge": "^5.8.0"
     },
     "dependencies": {
+        "moment": "^2.29.1",
         "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "serve": "^13.0.2"
+        "react-dom": "^17.0.2"
     }
 }

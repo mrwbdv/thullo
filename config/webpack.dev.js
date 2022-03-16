@@ -1,5 +1,8 @@
 const path = require("path");
+const webpack = require("webpack");
 const { merge } = require("webpack-merge");
+const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
+const { rootPathDir } = require("./utils");
 const { webpackCommonConfig } = require("./webpack.common");
 const { outputPathDir, staticPathDir, sourcePathDir } = require("./utils");
 
@@ -26,6 +29,7 @@ module.exports = merge(webpackCommonConfig, {
     output: {
         path: outputPathDir,
         filename: "[name].bundle.js",
+        publicPath: "/",
     },
     module: {
         rules: [
@@ -64,6 +68,18 @@ module.exports = merge(webpackCommonConfig, {
         }),
         new HtmlWebpackPlugin({
             template: path.join(staticPathDir, "index.html"), // шаблон для создания страницы
+        }),
+        new webpack.DllReferencePlugin({
+            context: rootPathDir,
+            manifest: require(path.join(
+                rootPathDir,
+                "build/library/library.dll.manifest.json"
+            )),
+        }),
+        new AddAssetHtmlPlugin({
+            filepath: require.resolve(
+                path.join(rootPathDir, "build/library/library.dll.js")
+            ),
         }),
     ],
 });
