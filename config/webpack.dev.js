@@ -44,11 +44,17 @@ module.exports = merge(webpackCommonConfig, {
             },
             {
                 test: /\.(png|jpe?g|gif|svg)$/i,
+                exclude: /\.inline.svg$/,
                 use: [
                     {
                         loader: "file-loader",
                     },
                 ],
+            },
+            {
+                test: /\.inline.svg$/i,
+                issuer: /\.[jt]sx?$/,
+                use: ["@svgr/webpack", "file-loader"],
             },
         ],
     },
