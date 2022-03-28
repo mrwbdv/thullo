@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { Logo } from "../../shared/atoms/icons/icons";
-import { Input, Text } from "../../shared/atoms";
-import { SearchBar } from "../../shared/organisms";
+import { Logo } from "../../shared/ui/atoms/icons/icons";
+import { Text } from "../../shared/ui/atoms";
+// import { SearchBar } from "../../shared/organisms";
 
 export const Header = () => (
     <HeaderContainer>
@@ -14,17 +14,19 @@ export const Header = () => (
                 Thullo
             </Text>
         </LogoLink>
-        <SearchBar
+        {/* <SearchBar
             name="search"
             onChange={() => console.log("text")}
             type="text"
             value=""
             placeholder="Keyword..."
-        />
+        /> */}
     </HeaderContainer>
 );
 
 const HeaderContainer = styled.header`
+    position: fixed;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;

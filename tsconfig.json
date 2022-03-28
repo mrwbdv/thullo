@@ -30,6 +30,8 @@
             "@features/*": ["src/features/*"],
             "@assets/*": ["src/assets/*"],
             "@router/*": ["src/router/*"],
+            "@shared": ["src/shared"],
+            "@shared/*": ["src/shared/*"],
             "@store": ["src/store"],
             "@store/*": ["src/store/*"],
             "@api": ["src/api"],

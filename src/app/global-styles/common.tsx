@@ -14,4 +14,9 @@ export const Common = createGlobalStyle`
         color: #1c1526;
         line-height: 1.15;
     }
+
+    html, body, #root {
+        min-height: 100vh;
+        background: #F8F9FD;
+    }
 `;

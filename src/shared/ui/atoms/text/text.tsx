@@ -25,7 +25,6 @@ const textVariants = variant({
     caption: {
       ...defaultextStyles,
       fontSize: 4,
-      fontWeight: "semi",
       fontFamily: "heading",
     },
     hint: {

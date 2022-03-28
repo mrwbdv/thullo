@@ -1,5 +1,11 @@
 const path = require("path");
-const { rootPathDir } = require("./utils");
+const { sourcePathDir, rootPathDir } = require("./utils");
+const Dotenv = require("dotenv-webpack");
+
+const folderAliasesCommon = {
+    "@features": path.join(sourcePathDir, "features"),
+    "@shared": path.join(sourcePathDir, "shared"),
+};
 
 module.exports.webpackCommonConfig = {
     // context: rootPathDir,
@@ -9,5 +15,11 @@ module.exports.webpackCommonConfig = {
     target: "web",
     resolve: {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".d.ts"],
+        alias: folderAliasesCommon,
     },
+    plugins: [
+        new Dotenv({
+            path: path.join(rootPathDir, ".env"),
+        }),
+    ],
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Input } from "../../atoms";
+import { Button, Input } from "@shared/ui/atoms";
 import styled from "styled-components";
 
 export const SearchBar = ({ onClick, ...props }: any) => (
