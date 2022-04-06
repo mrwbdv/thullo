@@ -6,6 +6,6 @@ import { HomePage } from "./home";
 // const NotFoundPage = React.lazy(() => import("./not-found"));
 
 export const ROUTES = [
-  { exact: true, path: paths.home(), component: HomePage },
-  // { path: "*", component: NotFoundPage },
+    { exact: true, path: paths.home(), component: HomePage },
+    // { path: "*", component: NotFoundPage },
 ];

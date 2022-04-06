@@ -1,2 +1,2 @@
-export { BoardCard } from "./BoardCard/BoardCard";
+export { SearchBar } from "./search-bar/search-bar";
 export { Modal } from "./modal/modal";

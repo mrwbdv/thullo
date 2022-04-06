@@ -42,8 +42,8 @@ export const theme = {
         // breakpoints,
         colors: {
             brand: {
-                primary: "#012E86",
-                secondary: "#0064D9",
+                primary: "#2f80ed",
+                secondary: "#f2f2f2;",
                 accent: "#DB7C00",
                 muted: "#C6DAF7",
             },
@@ -62,8 +62,8 @@ export const theme = {
             },
             text: {
                 primary: "#333333",
-                secondary: "#757575",
-                disabled: "#9C9C9C",
+                secondary: "#828282",
+                disabled: "#bdbdbd",
                 inverse: "#FFFFFF",
                 error: "#D0421B",
                 success: "#138000",
@@ -101,7 +101,7 @@ export const theme = {
                 success: "#1CBD00",
             },
             bg: {
-                primary: "#111111",
+                primary: "#FFFFFF",
                 secondary: "#262626",
             },
             text: {

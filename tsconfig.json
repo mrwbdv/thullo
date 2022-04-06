@@ -28,6 +28,8 @@
             "@components/*": ["src/components/*"],
             "@features": ["src/features"],
             "@features/*": ["src/features/*"],
+            "@entities": ["src/entities"],
+            "@entities/*": ["src/entities/*"],
             "@assets/*": ["src/assets/*"],
             "@router/*": ["src/router/*"],
             "@shared": ["src/shared"],

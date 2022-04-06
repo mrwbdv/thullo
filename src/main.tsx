@@ -9,10 +9,10 @@ import { theme } from "./app/theme";
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
-  <ThemeProvider theme={theme.light}>
-    <Router>
-      <App />
-    </Router>
-  </ThemeProvider>,
-  rootElement
+    <ThemeProvider theme={theme.light}>
+        <Router>
+            <App />
+        </Router>
+    </ThemeProvider>,
+    rootElement
 );

@@ -7,8 +7,8 @@ const getEnvVar = (key: string) => {
 
 export const API_URL = getEnvVar("REACT_APP_API_URL");
 
-export const NODE_ENV = getEnvVar("NODE_ENV");
+// export const NODE_ENV = getEnvVar("NODE_ENV");
 
-export const isDevEnv = NODE_ENV === "development";
+// export const isDevEnv = NODE_ENV === "development";
 
-export const isProdEnv = NODE_ENV === "production";
+// export const isProdEnv = NODE_ENV === "production";

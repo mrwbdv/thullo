@@ -1,7 +1,9 @@
-import { Button } from "@shared/ui/atoms";
 import React from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
+
+import { Button } from "@shared/ui/atoms";
+import { Close } from "@mui/icons-material";
 
 const ModalOverlay = styled.div`
     position: fixed;
@@ -32,6 +34,7 @@ const ModalDialog = styled.div`
     width: 100%;
     padding: 25px;
     overflow: hidden;
+    width: 310px;
     max-width: 700px;
     background: #fff;
     position: relative;
@@ -54,20 +57,30 @@ const ModalDialog = styled.div`
     }
 `;
 
-export const Modal = () => {
+export const Modal = ({ isOpen, onClose, children }) => {
+    const handleEscape = React.useCallback(
+        (event) => {
+            if (event.keyCode === 27) onClose();
+        },
+        [onClose]
+    );
+
+    React.useEffect(() => {
+        if (isOpen) document.addEventListener("keydown", handleEscape, false);
+        return () => {
+            document.removeEventListener("keydown", handleEscape, false);
+        };
+    }, [handleEscape, isOpen]);
+
     return ReactDOM.createPortal(
-        <ModalOverlay>
-            <ModalDialog>
-                <CloseButton>X</CloseButton>
-                <div>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => console.log(e)}
-                    />
-                </div>
-            </ModalDialog>
-        </ModalOverlay>,
+        isOpen ? (
+            <ModalOverlay>
+                <ModalDialog>
+                    <CloseButton onClick={onClose} leftIcon={<Close />} />
+                    {children}
+                </ModalDialog>
+            </ModalOverlay>
+        ) : null,
         document.getElementById("modal-root")
     );
 };
@@ -76,5 +89,6 @@ export const CloseButton = styled(Button)`
     position: absolute;
     top: 11px;
     right: 11px;
-    font-size: 25px;
+    z-index: 2;
+    padding: 0;
 `;

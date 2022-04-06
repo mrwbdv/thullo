@@ -2,27 +2,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { Logo } from "../../shared/ui/atoms/icons/icons";
-import { Text } from "../../shared/ui/atoms";
-// import { SearchBar } from "../../shared/organisms";
+import { Logo } from "@shared/ui/atoms/icons/icons";
+import { Text } from "@shared/ui/atoms";
+import { SearchBar } from "@shared/ui/molecules";
 
-export const Header = () => (
-    <HeaderContainer>
-        <LogoLink to="/">
-            <Logo />
-            <Text variant="caption" ml={12}>
-                Thullo
-            </Text>
-        </LogoLink>
-        {/* <SearchBar
-            name="search"
-            onChange={() => console.log("text")}
-            type="text"
-            value=""
-            placeholder="Keyword..."
-        /> */}
-    </HeaderContainer>
-);
+export const Header = () => {
+    const [search, setSearch] = React.useState("");
+    return (
+        <HeaderContainer>
+            <LogoLink to="/">
+                <Logo />
+                <Text variant="caption" ml={12}>
+                    Thullo
+                </Text>
+            </LogoLink>
+            <SearchBar
+                name="search"
+                onChange={(e) => setSearch(e.target.value)}
+                type="text"
+                value={search}
+                placeholder="Keyword..."
+            />
+        </HeaderContainer>
+    );
+};
 
 const HeaderContainer = styled.header`
     position: fixed;
